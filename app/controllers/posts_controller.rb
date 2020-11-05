@@ -8,4 +8,16 @@ class PostsController < ApplicationController
     Post.create(content: params[:content])
     redirect_to action: :index
   end
+
+  def checked   #「既読」の操作を行ったときに実行されるアクション #既読機能のサーバー側実装の最後らへんに解説あり
+    post = Post.find(params[:id])
+    if post.checked 
+      post.update(checked: false)
+    else
+      post.update(checked: true)
+    end
+
+    item = Post.find(params[:id])
+    render json: { post: item }
+  end
 end
