@@ -26,4 +26,5 @@ function check() {
     });
    });
 }
+
 setInterval(check, 1000);  //check関数が1秒に1度実行される
